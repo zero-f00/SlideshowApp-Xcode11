@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     var imageIndex = 0
     
     // 定数imagesに画像を配列として格納する
-    let images = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "4"), UIImage(named: "5"), UIImage(named: "6"), UIImage(named: "7")]
+    let images = [UIImage(named: "1.jpg"), UIImage(named: "2.jpg"), UIImage(named: "3.jpg"), UIImage(named: "4.jpg"), UIImage(named: "5.jpg"), UIImage(named: "6.jpg"), UIImage(named: "7.jpg")]
 
     // アプリを起動したときに呼ばれるめメソッド
     override func viewDidLoad() {
@@ -63,9 +63,14 @@ class ViewController: UIViewController {
         imageView.image = images[imageIndex]
     }
     
-//    @IBAction func backButton(_ sender: Any) {
-//
-//    }
+    @IBAction func backButton(_ sender: Any) {
+        if imageIndex == 0 {
+            imageIndex = 6
+        } else {
+            imageIndex -= 1
+        }
+        imageView.image = images[imageIndex]
+    }
     
     
 //    @IBAction func startStopButton(_ sender: Any) {
