@@ -14,10 +14,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     // タイマー用の時間のための変数
-    //var timer_sec: Float = 0
+    var timer_sec: Float = 0
     
     // タイマーを格納するプロパティ変数
-    //var timer: Timer!
+    var timer: Timer!
     
     // 定数imagesの配列で、何番目の画像を表示させるのかを判定させるための変数
     // 初期値として0を代入しておく
@@ -38,44 +38,48 @@ class ViewController: UIViewController {
         
         //UIimageViewに表示させるために、0番目の配列が入った定数firstImageNumを
         //IBOutletで接続した変数imageViewに代入する
-        
         imageView.image = firstImageNum
     }
     
-    // selector: #selector(updatetimer(_:)) で指定された関数
-    // timerInterval: 2.0, repeats: true で指定された通り、2秒毎に呼び出され続ける
-//    @objc func updateTimer(_ timer: Timer) {
-//        //if
-//        //self.timer_sec += 2.0
-//    }
-    
     @IBAction func nextButton(_ sender: Any) {
-        //imageIndexの値が7番目の画像のとき
+        // imageIndexの値が7番目の画像と同じとき
         if imageIndex == 6 {
-            //0を代入して最初の1番目の画像を表示させる
+            // 0を代入して最初の1番目の画像を表示させる
             imageIndex = 0
         } else {
             // 7番目(6)の画像でないのときは1を足す
             imageIndex += 1
         }
-        //imageIndexで判定させた値を定数imagesの配列番号として判定させる
-        //IBOutletで接続した変数UIimageViewに代入する
+        // imageIndexで判定させた値を定数imagesの配列番号として判定させる
+        // IBOutletで接続した変数UIimageViewに代入する
         imageView.image = images[imageIndex]
     }
     
     @IBAction func backButton(_ sender: Any) {
+        // imageIndexの値が１番目の画像と同じ時
         if imageIndex == 0 {
+            // 6を代入して最後（7番目）の画像を表示させる
             imageIndex = 6
         } else {
+            // それ以外のときはimageIndexから1を引いていく
             imageIndex -= 1
         }
+        // imageIndexで判定させた値を定数imagesの配列番号として判定させる
+        // IBOutletで接続した変数UIimageViewに代入する
         imageView.image = images[imageIndex]
     }
     
     
-//    @IBAction func startStopButton(_ sender: Any) {
-//
-//    }
+    @IBAction func startStopButton(_ sender: Any) {
+        
+    }
+    
+     // selector: #selector(updatetimer(_:)) で指定された関数
+     // timerInterval: 2.0, repeats: true で指定された通り、2秒毎に呼び出され続ける
+    @objc func updateTimer(_ timer: Timer) {
+        self.timer_sec += 2.0
+        self.timer
+    }
     
 
 }

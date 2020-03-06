@@ -77,7 +77,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="391.875" y="142.6056338028169"/>
+            <point key="canvasLocation" x="197" y="100"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ay2-fx-I9w">
+            <objects>
+                <viewController id="8TA-Tw-gsv" customClass="ViewController" customModule="SlideshowApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mbc-GA-6aP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zca-cc-pew">
+                                <rect key="frame" x="10" y="20" width="300" height="300"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j25-V9-blk">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="dwj-rt-MSX"/>
+                                    <constraint firstAttribute="width" constant="300" id="nUU-Mm-KMj"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keE-2U-a4K">
+                                <rect key="frame" x="145" y="381" width="31" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3xN-hJ-ffF"/>
+                                </constraints>
+                                <state key="normal" title="戻る"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="keE-2U-a4K" firstAttribute="leading" secondItem="mhx-fc-NrL" secondAttribute="leading" constant="145" id="4px-xx-Bzd"/>
+                            <constraint firstItem="mhx-fc-NrL" firstAttribute="trailing" secondItem="zca-cc-pew" secondAttribute="trailing" constant="10" id="GOQ-HK-rnE"/>
+                            <constraint firstItem="zca-cc-pew" firstAttribute="leading" secondItem="mhx-fc-NrL" secondAttribute="leading" constant="10" id="Gos-FW-8qx"/>
+                            <constraint firstItem="zca-cc-pew" firstAttribute="centerX" secondItem="mbc-GA-6aP" secondAttribute="centerX" id="NdW-n7-gS0"/>
+                            <constraint firstItem="mhx-fc-NrL" firstAttribute="trailing" secondItem="keE-2U-a4K" secondAttribute="trailing" constant="144" id="f9V-vr-RiN"/>
+                            <constraint firstItem="zca-cc-pew" firstAttribute="top" secondItem="mhx-fc-NrL" secondAttribute="top" constant="20" id="nYt-AV-U0V"/>
+                            <constraint firstItem="mhx-fc-NrL" firstAttribute="bottom" secondItem="keE-2U-a4K" secondAttribute="bottom" constant="157" id="wAV-7n-AU4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mhx-fc-NrL"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="j25-V9-blk" id="5g0-Dj-b4n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JxH-sZ-x7b" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905.28169014084506" y="97.5"/>
         </scene>
     </scenes>
 </document>
