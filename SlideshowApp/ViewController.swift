@@ -91,12 +91,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     
     @IBAction func startStopButton(_ sender: Any) {
-        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer(_:)), userInfo: nil, repeats: true)
+        // 動作中のタイマーを1つに保つために、timerが存在しない場合だけ、タイマーを生成して動作させる
+        if self.timer == nil {
+            self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer(_:)), userInfo: nil, repeats: true)
+        } else {
+            self.timer.invalidate() // タイマーを停止する
+            self.timer = nil    // updateTimer() の self.timer == nil で判断するために、self.timer = nil としておく
+        }
     }
     
      // selector: #selector(updatetimer(_:)) で指定された関数
      // timerInterval: 2.0, repeats: true で指定された通り、2秒毎に呼び出され続ける
     @objc func updateTimer(_ timer: Timer) {
+        
         // imageIndexの値が7番目の画像と同じとき
         if imageIndex == 6 {
             // 0を代入して最初の1番目の画像を表示させる
