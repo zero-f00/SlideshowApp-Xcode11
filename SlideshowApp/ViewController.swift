@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // StoryboardのUIImageViewをIBOutletで接続した
     @IBOutlet weak var imageView: UIImageView!
@@ -39,6 +39,26 @@ class ViewController: UIViewController {
         //UIimageViewに表示させるために、0番目の配列が入った定数firstImageNumを
         //IBOutletで接続した変数imageViewに代入する
         imageView.image = firstImageNum
+        
+        // 画像をタップしたことを認識するために、UITapGestureRecognizerを使ってインスタンスを生成
+        let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapped(_ :)))
+        
+        // デリゲートをセットする
+        tapGesture.delegate = self
+        
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tapped(_ sender: UITapGestureRecognizer){
+        self.performSegue(withIdentifier: "toSecond", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            // segueから遷移先のSecondViewControllerを取得する
+            let SecondViewController:SecondViewController = segue.destination as! SecondViewController
+            
+            // 遷移先のSecondViewControllerで宣言しているsecondImageに値を代入して渡す
+            SecondViewController.secondImage = images[imageIndex]!
     }
     
     @IBAction func nextButton(_ sender: Any) {
@@ -71,14 +91,27 @@ class ViewController: UIViewController {
     
     
     @IBAction func startStopButton(_ sender: Any) {
-        
+        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer(_:)), userInfo: nil, repeats: true)
     }
     
      // selector: #selector(updatetimer(_:)) で指定された関数
      // timerInterval: 2.0, repeats: true で指定された通り、2秒毎に呼び出され続ける
     @objc func updateTimer(_ timer: Timer) {
-        self.timer_sec += 2.0
-        self.timer
+        // imageIndexの値が7番目の画像と同じとき
+        if imageIndex == 6 {
+            // 0を代入して最初の1番目の画像を表示させる
+            imageIndex = 0
+        } else {
+            // 7番目(6)の画像でないのときは1を足す
+            imageIndex += 1
+        }
+        // imageIndexで判定させた値を定数imagesの配列番号として判定させる
+        // IBOutletで接続した変数UIimageViewに代入する
+        imageView.image = images[imageIndex]
+    }
+    
+    // 遷移先から戻るsegue
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
     }
     
 

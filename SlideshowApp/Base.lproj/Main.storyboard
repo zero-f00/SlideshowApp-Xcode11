@@ -72,19 +72,20 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="77x-VD-uOb" id="DiO-XP-4E7"/>
+                        <outlet property="imageView" destination="77x-VD-uOb" id="LNT-wm-wNk"/>
+                        <segue destination="8TA-Tw-gsv" kind="show" identifier="toSecond" id="dh7-E3-mkw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="197" y="100"/>
         </scene>
-        <!--View Controller-->
+        <!--Second View Controller-->
         <scene sceneID="Ay2-fx-I9w">
             <objects>
-                <viewController id="8TA-Tw-gsv" customClass="ViewController" customModule="SlideshowApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8TA-Tw-gsv" customClass="SecondViewController" customModule="SlideshowApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mbc-GA-6aP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zca-cc-pew">
@@ -100,11 +101,14 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keE-2U-a4K">
-                                <rect key="frame" x="145" y="381" width="31" height="30"/>
+                                <rect key="frame" x="145" y="361" width="31" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3xN-hJ-ffF"/>
                                 </constraints>
                                 <state key="normal" title="戻る"/>
+                                <connections>
+                                    <segue destination="iLr-u1-Ere" kind="unwind" unwindAction="unwind:" id="gsc-RB-fr7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -119,11 +123,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mhx-fc-NrL"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jVk-wZ-eq0"/>
                     <connections>
-                        <outlet property="imageView" destination="j25-V9-blk" id="5g0-Dj-b4n"/>
+                        <outlet property="secondImageView" destination="j25-V9-blk" id="CO8-8o-iMj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JxH-sZ-x7b" sceneMemberID="firstResponder"/>
+                <exit id="iLr-u1-Ere" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="905.28169014084506" y="97.5"/>
         </scene>
