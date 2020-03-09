@@ -13,6 +13,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     // StoryboardのUIImageViewをIBOutletで接続した
     @IBOutlet weak var imageView: UIImageView!
     
+    // タイマーが動作中の時にボタンを押せなくしたり、文字を変えたりするための変数（IBOutlet）
+    @IBOutlet weak var backButtonStop: UIButton!
+    @IBOutlet weak var nextButtonStop: UIButton!
+    @IBOutlet weak var startStopButtonStop: UIButton!
+    
+    
     // タイマー用の時間のための変数
     var timer_sec: Float = 0
     
@@ -46,11 +52,21 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         // デリゲートをセットする
         tapGesture.delegate = self
         
-        self.view.addGestureRecognizer(tapGesture)
+        self.imageView.addGestureRecognizer(tapGesture)
+        imageView.isUserInteractionEnabled = true
     }
     
     @objc func tapped(_ sender: UITapGestureRecognizer){
         self.performSegue(withIdentifier: "toSecond", sender: self)
+        
+        // 動作中のタイマーを1つに保つために、timerが存在しない場合だけ、タイマーを生成して動作させる
+        if self.timer != nil {
+            self.timer.invalidate() // タイマーを停止する
+            self.timer = nil        // updateTimer() の self.timer == nil で判断するために、self.timer = nil としておく
+            backButtonStop.isEnabled = true // 戻るボタンを活性化する
+            nextButtonStop.isEnabled = true // 進むボタンを活性化する
+            startStopButtonStop.setTitle("再生", for: .normal) //ボタンのタイトルを変更する
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -94,9 +110,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         // 動作中のタイマーを1つに保つために、timerが存在しない場合だけ、タイマーを生成して動作させる
         if self.timer == nil {
             self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer(_:)), userInfo: nil, repeats: true)
+            backButtonStop.isEnabled = false // 戻るボタンを非活性にする
+            nextButtonStop.isEnabled = false // 進むボタンを非活性にする
+            startStopButtonStop.setTitle("停止", for: .normal) //ボタンのタイトルを変更する
         } else {
             self.timer.invalidate() // タイマーを停止する
             self.timer = nil    // updateTimer() の self.timer == nil で判断するために、self.timer = nil としておく
+            backButtonStop.isEnabled = true // 戻るボタンを活性化する
+            nextButtonStop.isEnabled = true // 進むボタンを活性化する
+            startStopButtonStop.setTitle("再生", for: .normal) //ボタンのタイトルを変更する
         }
     }
     

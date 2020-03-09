@@ -28,7 +28,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="nNL-mc-Bdf">
-                                <rect key="frame" x="36" y="269" width="248" height="30"/>
+                                <rect key="frame" x="53.5" y="269" width="213" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY5-f5-UlA">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
@@ -38,14 +38,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YP8-yO-1rB">
-                                        <rect key="frame" x="91" y="0.0" width="66" height="30"/>
-                                        <state key="normal" title="再生/停止"/>
+                                        <rect key="frame" x="91" y="0.0" width="31" height="30"/>
+                                        <state key="normal" title="再生"/>
                                         <connections>
                                             <action selector="startStopButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UFz-M6-eDZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYm-1f-beF">
-                                        <rect key="frame" x="217" y="0.0" width="31" height="30"/>
+                                        <rect key="frame" x="182" y="0.0" width="31" height="30"/>
                                         <state key="normal" title="進む"/>
                                         <connections>
                                             <action selector="nextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bAN-J3-LYJ"/>
@@ -72,7 +72,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="backButtonStop" destination="jY5-f5-UlA" id="B9i-r7-by3"/>
                         <outlet property="imageView" destination="77x-VD-uOb" id="LNT-wm-wNk"/>
+                        <outlet property="nextButtonStop" destination="fYm-1f-beF" id="OIg-fj-MI8"/>
+                        <outlet property="startStopButtonStop" destination="YP8-yO-1rB" id="arw-9z-bY3"/>
                         <segue destination="8TA-Tw-gsv" kind="show" identifier="toSecond" id="dh7-E3-mkw"/>
                     </connections>
                 </viewController>
